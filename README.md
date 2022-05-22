@@ -10,3 +10,5 @@ Smart Traffic System
 ![unknown](https://user-images.githubusercontent.com/74122725/169661851-0aaae65d-0c46-4ddc-9d4a-7441f0cf1aae.png)
 
 4) In our algorithm that we put on our website, it counts the number of vehicles on the upper left and categorizes them. Our system gives an error after the number of vehicles waiting in the red exceeds a certain level. At the same time, if the same vehicle could not pass between 2 red lights, our system gives an error again and reports that excavation work should be done in this area.
+
+5)
