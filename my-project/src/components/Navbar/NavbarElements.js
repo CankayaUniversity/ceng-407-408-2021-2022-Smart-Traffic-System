@@ -110,6 +110,26 @@ export const NavLinksR = styled(LinkR)`
   }
 `
 
+export const NavLinksLogout = styled(LinkR)`
+  color: #fff;
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  padding: 0 1rem;
+  height: 100%;
+  cursor: pointer;
+
+  &.active {
+    border-bottom: 3px solid #01bf71;
+  }
+
+  &:hover {
+    color: #01bf71;
+    /* border-radius: 8px;
+    transition: all 0.2s ease-in-out; */
+  }
+`
+
 export const NavBtn = styled.nav`
   display: flex;
   align-items: center;

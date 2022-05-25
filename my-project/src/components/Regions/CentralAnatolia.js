@@ -1,7 +1,7 @@
 import React from 'react'
 
 const CentralAnatolia = () => {
-  return <h1>alooooo</h1>
+  return <h1>In Progress</h1>
 }
 
 export default CentralAnatolia

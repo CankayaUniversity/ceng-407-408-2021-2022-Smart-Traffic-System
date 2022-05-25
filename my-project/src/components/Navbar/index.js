@@ -4,6 +4,9 @@ import { FaTrafficLight } from 'react-icons/fa'
 import { IoIosArrowDropdownCircle } from 'react-icons/io'
 import { animateScroll as scroll } from 'react-scroll'
 import Dropdown from './Dropdown'
+import { Link, useNavigate } from 'react-router-dom'
+import { useSelector, useDispatch } from 'react-redux'
+import { logout, reset } from '../../features/authSlice'
 
 import {
   Nav,
@@ -16,11 +19,22 @@ import {
   NavBtn,
   NavBtnLink,
   NavLinksR,
+  NavLinksLogout
 } from './NavbarElements'
 
 const Navbar = ({ toggle }) => {
   const [scrollNav, setScrollNav] = useState(false)
   const [dropdown, setDropdown] = useState(false)
+
+  const navigate = useNavigate()
+  const dispatch = useDispatch()
+  const { user } = useSelector((state) => state.auth)
+
+  const onLogout = () => {
+    dispatch(logout())
+    dispatch(reset())
+    navigate('/')
+  }
 
   const onMouseEnter = () => {
     if (window.innerWidth < 960) {
@@ -131,23 +145,21 @@ const Navbar = ({ toggle }) => {
                 Contact
               </NavLinksR>
             </NavItem>
-            <NavItem>
-              <NavLinksR
-                to='/signup'
-                smooth={true}
-                duration={500}
-                spy={true}
-                exact='true'
-                offset={-80}
-              >
-                Signup
-              </NavLinksR>
-            </NavItem>
+            
           </NavMenu>
         </NavbarContainer>
 
         <NavBtn>
-          <NavBtnLink to='/signin'>Sign In</NavBtnLink>
+          {user ? (
+            <NavBtnLink to='/' onClick={onLogout}>
+              Logout
+            </NavBtnLink>
+          ) : (
+            <>
+              <NavLinksR to='/signup'>Sign Up</NavLinksR>
+              <NavBtnLink to='/signin'>Sign In</NavBtnLink>
+            </>
+          )}
         </NavBtn>
       </Nav>
     </>

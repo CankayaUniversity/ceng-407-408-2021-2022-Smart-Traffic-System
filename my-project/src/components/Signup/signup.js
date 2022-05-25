@@ -1,44 +1,70 @@
-import React, {useState} from 'react'
-import useForm from './useForm'
+import { useState, useEffect } from 'react'
+
 import validate from './validateInfo'
 import axios from "axios"
 import './Form.css'
+import { toast } from 'react-toastify'
+import { register, reset } from '../../features/authSlice'
+import { useSelector, useDispatch } from 'react-redux'
+import { useNavigate } from 'react-router-dom'
 
 
 const Signup = ({ submitForm }) => {
-  const {handleSubmit, values, errors } = useForm(
-    submitForm,
-    validate
-  )
-
-  const [user,setUser] = useState({
-    name:"",
-    email:"",
-    password:""
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    password: '',
+    password2: '',
   })
 
-  const handleChange = (e) => {
-    const { name, value } = e.target
-    setUser({
-      ...user, //spread operator
-      [name]: value,
-    })
+  const { name, email, password, password2 } = formData
+
+  const navigate = useNavigate()
+  const dispatch = useDispatch()
+
+  const { user, isLoading, isError, isSuccess, message } = useSelector(
+    (state) => state.auth
+  )
+
+  useEffect(() => {
+    if (isError) {
+      toast.error(message)
+    }
+
+    if (isSuccess || user) {
+      navigate('/')
+    }
+
+    dispatch(reset())
+  }, [user, isError, isSuccess, message, navigate, dispatch])
+
+  const onChange = (e) => {
+    setFormData((prevState) => ({
+      ...prevState,
+      [e.target.name]: e.target.value,
+    }))
   }
-  //register function
-  const egister = () => {
-    const { name, email, password } = user
-    if (name && email && password) {
-      axios
-        .post('http://localhost:5000/Register', user)
-        .then((res) => console.log(res))
+
+  const onSubmit = (e) => {
+    e.preventDefault()
+
+    if (password !== password2) {
+      toast.error('Passwords do not match')
     } else {
-      alert('invalid input')
+      const userData = {
+        name,
+        email,
+        password,
+      }
+
+      dispatch(register(userData))
     }
   }
 
+
   return (
     <div className='form-content-right'>
-      <form onSubmit={handleSubmit} className='form' noValidate>
+      <form onSubmit={onSubmit} className='form' noValidate>
         <h1>
           Get started with us today! Create your account by filling out the
           information below.
@@ -48,48 +74,52 @@ const Signup = ({ submitForm }) => {
           <input
             className='form-input'
             type='text'
-            name='username'
+            id='name'
+            name='name'
             placeholder='Enter your username'
-            value={values.username}
-            onChange={handleChange}
+            value={name}
+            onChange={onChange}
           />
-          {errors.username && <p>{errors.username}</p>}
+          
         </div>
         <div className='form-inputs'>
           <label className='form-label'>Email</label>
           <input
             className='form-input'
             type='email'
+            id='email'
             name='email'
             placeholder='Enter your email'
-            value={values.email}
-            onChange={handleChange}
+            value={email}
+            onChange={onChange}
           />
-          {errors.email && <p>{errors.email}</p>}
+       
         </div>
         <div className='form-inputs'>
           <label className='form-label'>Password</label>
           <input
             className='form-input'
             type='password'
+            id='password'
             name='password'
             placeholder='Enter your password'
-            value={values.password}
-            onChange={handleChange}
+            value={password}
+            onChange={onChange}
           />
-          {errors.password && <p>{errors.password}</p>}
+         
         </div>
         <div className='form-inputs'>
           <label className='form-label'>Confirm Password</label>
           <input
             className='form-input'
             type='password'
+            id='password2'
             name='password2'
             placeholder='Confirm your password'
-            value={values.password2}
-            onChange={handleChange}
+            value={password2}
+            onChange={onChange}
           />
-          {errors.password2 && <p>{errors.password2}</p>}
+        
         </div>
         <button className='form-input-btn' type='submit'>
           Sign up
