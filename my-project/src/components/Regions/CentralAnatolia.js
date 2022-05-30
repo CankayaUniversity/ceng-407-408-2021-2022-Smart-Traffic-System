@@ -1,7 +1,12 @@
 import React from 'react'
+import Navbar from '../Navbar/index'
 
 const CentralAnatolia = () => {
-  return <h1>In Progress</h1>
+  return (
+  <>
+  <Navbar />
+  <h1 style={{color:"white", textAlign:"center"}}>In Progress...</h1>
+  </>)
 }
 
 export default CentralAnatolia
