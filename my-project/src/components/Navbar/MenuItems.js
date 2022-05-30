@@ -30,8 +30,13 @@ export const MenuItems = [
     cName: 'dropdown-link',
   },
   {
-    title: 'Southeast Anatolia Region Region',
+    title: 'Southeast Anatolia Region',
     path: '/southeast-anatolia',
+    cName: 'dropdown-link',
+  },
+  {
+    title: 'TEST PAGE ',
+    path: '/test',
     cName: 'dropdown-link',
   },
 ]

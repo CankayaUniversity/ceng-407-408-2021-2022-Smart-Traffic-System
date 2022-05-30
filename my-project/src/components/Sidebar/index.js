@@ -16,6 +16,22 @@ import {
 const Sidebar = ({ isOpen, toggle }) => {
   const [dropdown, setDropdown] = useState(false)
 
+    const onMouseEnter = () => {
+    if (window.innerWidth < 960) {
+      setDropdown(false)
+    } else {
+      setDropdown(true)
+    }
+  }
+
+  const onMouseLeave = () => {
+    if (window.innerWidth < 960) {
+      setDropdown(false)
+    } else {
+      setDropdown(false)
+    }
+  }
+
   return (
     <SidebarContainer isOpen={isOpen} onClick={toggle}>
       <Icon onClick={toggle}>
@@ -26,9 +42,10 @@ const Sidebar = ({ isOpen, toggle }) => {
           <SidebarLink to='about' onClick={toggle}>
             About
           </SidebarLink>
-          <SidebarLink to='regions' onClick={toggle}>
-            Regions <IoIosArrowDropdownCircle />
+          <SidebarLink to='regions' onClick={toggle} onMouseEnter={onMouseEnter} onMouseLeave={onMouseLeave}>
+            Regions <IoIosArrowDropdownCircle /> {dropdown && <Dropdown />}
           </SidebarLink>
+            
           <SidebarLink to='services' onClick={toggle}>
             Services
           </SidebarLink>
@@ -38,7 +55,7 @@ const Sidebar = ({ isOpen, toggle }) => {
           <SidebarLinkR to='/signup' onClick={toggle}>
             Signup
           </SidebarLinkR>
-          {dropdown && <Dropdown />}
+  
         </SidebarMenu>
         <SideBtnWrap>
           <SidebarRoute to='/signin'>Sign In</SidebarRoute>

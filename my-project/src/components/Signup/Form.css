@@ -163,3 +163,12 @@ body {
   color: #27cdff;
   font-weight: 600;
 }
+
+@media screen and (max-width: 768px) {
+  .form-container {
+    width: 95%;
+    /* display: grid;
+    grid-auto-rows: auto auto;
+    gap: 0; */
+  }
+}
