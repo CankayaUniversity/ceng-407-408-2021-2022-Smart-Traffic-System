@@ -30,14 +30,15 @@
 
 @media screen and (max-width: 768px) {
   .dropdown-menu {
-    width: 75px;
-    top: 150px;
+    width: 180px;
+    top: 250px;
   }
   .dropdown-link {
-    height: 50%;
-    width: 50%;
+    height: 70%;
+    width: 90%;
+    display: block;
   }
   .dropdown-menu li {
-    font-size: 10px;
+    font-size: 15px;
   }
 }

@@ -17,15 +17,15 @@ const Sidebar = ({ isOpen, toggle }) => {
   const [dropdown, setDropdown] = useState(false)
 
     const onMouseEnter = () => {
-    if (window.innerWidth < 960) {
-      setDropdown(false)
-    } else {
+    if (window.innerWidth < 768) {
       setDropdown(true)
+    } else {
+      setDropdown(false)
     }
   }
 
   const onMouseLeave = () => {
-    if (window.innerWidth < 960) {
+    if (window.innerWidth < 768) {
       setDropdown(false)
     } else {
       setDropdown(false)
@@ -33,6 +33,7 @@ const Sidebar = ({ isOpen, toggle }) => {
   }
 
   return (
+    
     <SidebarContainer isOpen={isOpen} onClick={toggle}>
       <Icon onClick={toggle}>
         <CloseIcon />
