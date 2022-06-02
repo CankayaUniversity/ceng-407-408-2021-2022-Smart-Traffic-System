@@ -5,7 +5,6 @@ import Navbar from '../Navbar/index'
 const ContactUs  = () => {
     return(
     <>
-        <Navbar />
 
       <meta httpEquiv="Content-Type" content="text/html; charset=utf-8" />
       <meta

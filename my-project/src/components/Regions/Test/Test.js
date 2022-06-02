@@ -35,7 +35,6 @@ const Test = () => {
 
   return (
     <>
-    <Navbar />
     <HeroContainer>
       <HeroBg>
         <VideoBg autoPlay loop muted src={Video} type='video/mp4' />

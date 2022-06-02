@@ -4,16 +4,13 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import Home from './pages'
 import SigninPage from './pages/signin'
 import SignupPage from './pages/signup'
-import TestPage from './components/Regions/Test/Test'
+import TestPage from './pages/test'
 import ContactPage from './pages/contact'
 import 'react-toastify/dist/ReactToastify.css'
 import { ToastContainer } from 'react-toastify'
 
 function App() {
-
   return (
-
-
     <>
       <Router>
         <Routes>

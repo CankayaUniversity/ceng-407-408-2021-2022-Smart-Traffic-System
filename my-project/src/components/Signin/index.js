@@ -67,7 +67,6 @@ const SignIn = () => {
 
   return (
     <>
-      <Navbar />
       <Container>
         <FormWrap>
           <Icon to='/'>Smart Traffic Systems</Icon>

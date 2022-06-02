@@ -19,10 +19,9 @@ const Services = () => {
       <ServicesWrapper>
         <ServicesCard>
           <ServicesIcon src={Icon1} />
-          <ServicesH2>Detecting the vehicle type</ServicesH2>
+          <ServicesH2>Calculates waiting time</ServicesH2>
           <ServicesP>
-            The system detects whether the vehicle is a car,truck,motorcycle
-            etc.
+            The system calculates the waiting time for vehicles in red light.
           </ServicesP>
         </ServicesCard>
         <ServicesCard>
@@ -35,10 +34,9 @@ const Services = () => {
         </ServicesCard>
         <ServicesCard>
           <ServicesIcon src={Icon3} />
-          <ServicesH2>Detecting the vehicle type</ServicesH2>
+          <ServicesH2>Calculates vehicle number</ServicesH2>
           <ServicesP>
-            The system detects whether the vehicle is a car,truck,motorcycle
-            etc.
+            The system calculates how many vehicles are waiting in the red light.
           </ServicesP>
         </ServicesCard>
       </ServicesWrapper>

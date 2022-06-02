@@ -1,10 +1,9 @@
-import {React, useState} from 'react'
-import Form from '../components/ContactPage/index'
+import {React , useState} from 'react'
+import Test from '../components/Regions/Test/Test'
 import Sidebar from '../components/Sidebar'
 import Navbar from '../components/Navbar'
 
-const Contact = () => {
-
+const TestPage = () => {
   const [isOpen, setIsOpen] = useState(false)
   const toggle = () => {
     setIsOpen(!isOpen)
@@ -12,13 +11,11 @@ const Contact = () => {
 
   return (
     <>
-      <Sidebar isOpen={isOpen} toggle={toggle} />
+    <Sidebar isOpen={isOpen} toggle={toggle} />
       <Navbar toggle={toggle} />
-      <Form/>
+      <Test />
     </>
-      
-    
   )
 }
 
-export default Contact
+export default TestPage
