@@ -24,7 +24,7 @@ const ContactUs  = () => {
           <h2>
             <i className="fa fa-phone" aria-hidden="true" /> Phone
           </h2>
-          <p>123-456-789</p>
+          <p>(0312) 233 10 00</p>
           <h2>
             <i className="fa fa-envelope" aria-hidden="true" /> Email
           </h2>

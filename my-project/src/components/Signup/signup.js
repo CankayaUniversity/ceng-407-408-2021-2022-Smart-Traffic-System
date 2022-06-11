@@ -32,7 +32,7 @@ const Signup = ({ submitForm }) => {
     }
 
     if (isSuccess || user) {
-      navigate('/')
+      navigate('/signin')
     }
 
     dispatch(reset())

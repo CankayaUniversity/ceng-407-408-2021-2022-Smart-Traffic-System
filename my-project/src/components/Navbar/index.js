@@ -4,7 +4,7 @@ import { FaTrafficLight } from 'react-icons/fa'
 import { IoIosArrowDropdownCircle } from 'react-icons/io'
 import { animateScroll as scroll } from 'react-scroll'
 import Dropdown from './Dropdown'
-import { Link, useNavigate } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 import { useSelector, useDispatch } from 'react-redux'
 import { logout, reset } from '../../features/authSlice'
 
@@ -64,7 +64,6 @@ const Navbar = ({ toggle }) => {
   const toggleHome = () => {
     scroll.scrollToTop()
   }
-
   return (
     <>
       <Nav scrollNav={scrollNav}>

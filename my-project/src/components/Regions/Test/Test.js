@@ -1,7 +1,7 @@
 import React, { useRef, useState } from "react";
-import axios from 'axios'
-import Navbar from '../../Navbar/index'
 
+import { useSelector} from 'react-redux'
+import { useNavigate } from 'react-router-dom'
 import {
   HeroContainer,
   HeroBg,
@@ -14,49 +14,57 @@ import {
   ArrowRight,
 } from '../../HeroSection/HeroElements'
 import Video from '../../../videos/video2.mp4'
-import { Button } from '../../ButtonElements'
+import { TestButton } from '../../ButtonElements'
 const Test = () => {
 
-  async function getAllData() {
+  const { user } = useSelector((state) => state.auth)
+  const navigate = useNavigate()
 
-    const res = await fetch(`api/python`);
-  
+  async function getPython() {
+
+    if(user){
+      const res = await fetch('/api/python');
+    }
+    else{
+      navigate('/signup')
+    }
+    
   }
 
 
   const [hover, setHover] = useState(false)
 
-    const onHover = () => {
-      setHover = !hover
-    }
+  const onHover = () => {
+    setHover = !hover
+  }
 
-  
+
 
 
   return (
     <>
-    <HeroContainer>
-      <HeroBg>
-        <VideoBg autoPlay loop muted src={Video} type='video/mp4' />
-      </HeroBg>
-      <HeroContent>
-        <HeroH1>Welcome to the Smart Traffic Systems Testing Python Code Page</HeroH1>
-        <HeroP>
-          Click this button to see the car recognition system with Python! 
-        </HeroP>
-        <HeroBtnWrapper>
-          <Button to='/signup' onClick={getAllData} onMouseEnter={onHover} onMouseLeave={onHover}>
-            Start the System {hover ? <ArrowForward /> : <ArrowRight />}
-          </Button>
-        </HeroBtnWrapper>
-      </HeroContent>
-    </HeroContainer>
-  
+      <HeroContainer>
+        <HeroBg>
+          <VideoBg autoPlay loop muted src={Video} type='video/mp4' />
+        </HeroBg>
+        <HeroContent>
+          <HeroH1>Welcome to the Smart Traffic Systems Testing Python Code Page</HeroH1>
+          <HeroP>
+            Click this button to see the car recognition system with Python!
+          </HeroP>
+          <HeroBtnWrapper>
+            <TestButton onClick={getPython} onMouseEnter={onHover} onMouseLeave={onHover} >
+              Start the System {hover ? <ArrowForward /> : <ArrowRight />}
+            </TestButton>
+          </HeroBtnWrapper>
+        </HeroContent>
+      </HeroContainer>
 
 
-    
+
+
     </>
-    
+
   )
 
 }

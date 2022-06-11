@@ -1,6 +1,10 @@
 import React, { useState } from 'react'
 import { IoIosArrowDropdownCircle } from 'react-icons/io'
 import Dropdown from '../Navbar/Dropdown'
+import { useNavigate } from 'react-router-dom'
+import { useSelector, useDispatch } from 'react-redux'
+import { logout, reset } from '../../features/authSlice'
+
 import {
   SidebarContainer,
   Icon,
@@ -11,10 +15,21 @@ import {
   SidebarLinkR,
   SideBtnWrap,
   SidebarRoute,
+  SidebarLinkRSignup
 } from './SideBarElements'
 
 const Sidebar = ({ isOpen, toggle }) => {
   const [dropdown, setDropdown] = useState(false)
+
+  const navigate = useNavigate()
+  const dispatch = useDispatch()
+  const { user } = useSelector((state) => state.auth)
+
+  const onLogout = () => {
+    dispatch(logout())
+    dispatch(reset())
+    navigate('/')
+  }
 
     const onMouseEnter = () => {
     if (window.innerWidth < 768) {
@@ -53,16 +68,29 @@ const Sidebar = ({ isOpen, toggle }) => {
           <SidebarLinkR to='/contact' onClick={toggle}>
             Contact
           </SidebarLinkR>
-          <SidebarLinkR to='/signup' onClick={toggle}>
-            Signup
-          </SidebarLinkR>
+          
   
         </SidebarMenu>
+
         <SideBtnWrap>
-          <SidebarRoute to='/signin'>Sign In</SidebarRoute>
+          {user ? (
+            <SidebarRoute to='/' onClick={onLogout}>
+              Logout
+             </SidebarRoute > 
+          ) : (
+            <>
+              <SidebarLinkRSignup  to='/signup' onClick={toggle}>
+            Signup
+          </SidebarLinkRSignup> 
+             <SidebarRoute to='/signin'>Sign In</SidebarRoute>
+            </>
+          )}
+          
         </SideBtnWrap>
+
       </SidebarWrapper>
     </SidebarContainer>
+    
   )
 }
 
