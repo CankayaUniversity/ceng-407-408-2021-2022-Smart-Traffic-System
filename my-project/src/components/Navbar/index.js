@@ -19,7 +19,7 @@ import {
   NavBtn,
   NavBtnLink,
   NavLinksR,
-  NavLinksLogout
+
 } from './NavbarElements'
 
 const Navbar = ({ toggle }) => {
